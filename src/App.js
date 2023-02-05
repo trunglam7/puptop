@@ -43,7 +43,6 @@ function App() {
       const docCheck = async () => {
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()){
-          console.log(docSnap.data().dogs);
           setDogList(docSnap.data().dogs);
         }
         else{

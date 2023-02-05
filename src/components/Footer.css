@@ -90,8 +90,20 @@ footer .submit-btn{
     background-color: lime;
 }
 
-.finish-block-hidden{
+.finish-block-hidden, .reloading-block-hidden{
     display: none;
+}
+
+.reloading-block{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
 }
 
 @keyframes slideDown {

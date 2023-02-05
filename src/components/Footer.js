@@ -13,6 +13,7 @@ const Footer = () => {
 
     const [loading, setLoading] = useState(false);
     const [finish, setFinish] = useState(false);
+    const [reloading, setReloading] = useState(false);
 
     //function to handle submission of dogs
     //grabs the name and the file and sends it to the uploadFile function for further processing
@@ -56,6 +57,7 @@ const Footer = () => {
                 else{
                 setLoading(false);
                 setFinish(true);
+                setReloading(true);
                 }
             },
             (error) => {
@@ -90,13 +92,13 @@ const Footer = () => {
     
     if(finish){
         setTimeout(() => {
-            setFinish(false);
             window.location.reload(false);
-        }, 2000)
+        }, 5000)
     }
 
     return (
         <>
+            <div className={reloading ? 'reloading-block' : 'reloading-block-hidden'}>Reloading...</div>
             <p className={finish ? 'finish-block' : 'finish-block-hidden'}>Dog Successfully Added</p>
             <footer>
                 <dialog id="add-dog-dialog">
