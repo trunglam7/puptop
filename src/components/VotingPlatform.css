@@ -1,0 +1,33 @@
+main{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.vote-buttons button{
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.vote-buttons{
+    display: flex;
+    column-gap: 50px;
+    margin-top: 25px;
+}
+
+.vote-buttons .left:hover{
+    box-shadow: 0px 0px 20px rgba(128,128,128, 0.5);
+    background-color: rgba(128,128,128, 0.2);
+}
+
+.vote-buttons .right:hover{
+    box-shadow: 0px 0px 20px rgba(255, 192, 203, 0.5);
+    background-color: rgba(255, 192, 203, 0.2);
+}

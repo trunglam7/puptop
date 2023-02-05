@@ -1,0 +1,104 @@
+footer{
+    position: fixed;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+}
+
+footer button{
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+
+footer dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 20px;
+    min-width: 50%;
+}
+
+footer label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+footer dialog div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+footer input{
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+    text-align: center;
+}
+
+footer .submit-btn{
+    background-color: initial;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: auto;
+    border-color: gray;
+    color: black;
+}
+
+
+.btn-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+.loading-block, .finish-block{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    animation: slideDown 0.3s ease-out;
+    font-weight: bold;
+}
+
+.loading-block{
+    background-color: coral;
+}
+
+.finish-block{
+    background-color: lime;
+}
+
+.finish-block-hidden{
+    display: none;
+}
+
+@keyframes slideDown {
+    from{
+        height: 0rem;
+    }
+    to{
+        height: 5rem;
+    }
+}

@@ -1,0 +1,73 @@
+.ranking-side-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hidden{
+    display: none;
+}
+
+.ranking-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    animation: slidingBar 1s forwards;
+}
+
+.ranking-container h2{
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+    animation: appearCard 2s forwards;
+}
+
+.dog-ranking-card{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding: 0 3rem;
+    animation: appearCard 2s forwards;
+}
+
+.dog-ranking-card b{
+    font-size: 1.5rem;
+}
+
+.dog-ranking-card img{
+    width: 5rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.rank-msg{
+    margin-left: 3rem;
+    animation: appearCard 2s forwards;
+}
+
+@keyframes slidingBar {
+    from{
+        width: 0rem;
+    }
+    to{
+        width: 50rem;
+    }
+}
+
+@keyframes appearCard {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
