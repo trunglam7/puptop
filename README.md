@@ -5,3 +5,6 @@
 ## Tech Stack
 - Firebase: stores the data of the dogs such their image, score and the last dog the user last visited before exiting the app
 - React: Core framework of this application
+
+## Live Site
+- https://puptop.netlify.app
