@@ -16,6 +16,7 @@ const Header = () => {
     return (
         <header>
             <button style={{"zIndex": toggleRank ? 1 : 0}} onClick={() => toggleRankHandler()} className='ranking-btn'>{toggleRank ? <GrClose size={40} /> : <CgMenuMotion size={40} color={'black'}/> }</button>
+            <h1>PupTop</h1>
             <RankingSideBar toggleRank={toggleRank}/>
         </header>
     )
