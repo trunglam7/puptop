@@ -89,7 +89,7 @@ const Footer = () => {
             <p className='loading-block'>Loading...</p>
         )
     }
-    
+
     if(finish){
         setTimeout(() => {
             window.location.reload(false);
@@ -120,7 +120,6 @@ const Footer = () => {
                 <button style={{color: 'black'}} onClick={() => addDogHandler()}><GrAdd size={40}/>Add</button>
             </footer>
         </>
-        
     )
 }
 

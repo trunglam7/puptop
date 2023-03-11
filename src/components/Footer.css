@@ -65,7 +65,6 @@ footer .submit-btn{
 .btn-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    
 }
 
 .loading-block, .finish-block{

@@ -1,5 +1,4 @@
 import React, {useState, createContext, useEffect} from 'react';
-import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import VotingPlatform from './components/VotingPlatform';
