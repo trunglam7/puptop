@@ -5,7 +5,9 @@ import VotingPlatform from './components/VotingPlatform';
 import { db } from './backend/Firebase';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+import './App.css'
 
 export const DogsContext = createContext();
 
