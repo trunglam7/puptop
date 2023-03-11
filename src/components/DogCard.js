@@ -21,15 +21,13 @@ const DogCard = ({vote, dog}) => {
       dogData[dog].score -= 1;
       updateDogData();
     }
-  
     if(vote === "animate-slide-right"){
       dogData[dog].score += 1;
       updateDogData();
     }
   }, [vote, dog, dogData, updateDogData]);
-  
 
-  
+
   if(dog === null || !dogData[dog]){
     return (
       <b>No More Dogs To Vote</b>

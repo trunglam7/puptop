@@ -36,7 +36,7 @@ const VotingPlatform = ({ user }) => {
         };
         docCheck().catch((err) => console.log(err));
     }, [user.uid])
-    
+
     //functions to handle user choices
     function slideLeftHandler() {
         setVote("animate-slide-left");
@@ -51,9 +51,7 @@ const VotingPlatform = ({ user }) => {
             else{
                 setDog(dog + 1);
             }
-    
         }, 1000);
-        
     }
 
     function slideRightHandler() {
@@ -69,24 +67,22 @@ const VotingPlatform = ({ user }) => {
             else{
                 setDog(dog + 1);
             }
-            
         }, 1000);
     }
-    
+
     useEffect(() => {
         if(dog >= dogData.length){
             setDog(null);
         }
     }, [dog, dogData.length]);
-    
+
 
     useEffect(() => {
         if(voteStorage != null){
             updateUserData();
         }
     }, [voteStorage, updateUserData]);
-    
-    
+
 
     return (
         <main>
