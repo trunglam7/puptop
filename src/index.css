@@ -5,6 +5,7 @@
 }
 
 body {
+  overflow: hidden;
   font-family: 'Mochiy Pop One', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
