@@ -30,7 +30,7 @@ function App() {
         if(!docSnap.exists()){
           setDoc(docRef, {
             votes: 0
-          })
+          }).then(() => window.location.reload(false));
         }
       };
       docCheck().catch((err) => console.log(err));

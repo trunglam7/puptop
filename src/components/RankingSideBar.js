@@ -15,7 +15,7 @@ const RankingSideBar = ({toggleRank}) => {
                 <b>{dogName}</b>
             </div>
         )
-    }   
+    }
 
     //sort dog list based on score
     const sortedDogs = [...dogData].sort((a, b) => b.score - a.score);
@@ -23,7 +23,7 @@ const RankingSideBar = ({toggleRank}) => {
         <div className={toggleRank ? 'ranking-side-container' : 'ranking-side-container hidden'}>
             <div className='ranking-container'>
                 <h2>Ranking</h2>
-                {sortedDogs.length ? 
+                {sortedDogs.length ?
                     sortedDogs.map((dog, index) => <DogRankingCard key={index} placement={index} dogImage={dog.image} dogName={dog.name}/>) 
                     : <p className='rank-msg'>No Dogs Here</p>}
             </div>
