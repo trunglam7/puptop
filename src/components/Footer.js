@@ -20,9 +20,11 @@ const Footer = () => {
     const submitDogHandler = () => {
         const dogName = document.getElementById('dog-name');
         const dogImage = document.getElementById('dog-image');
+        const addDogDialog = document.getElementById('add-dog-dialog');
 
         if(dogName.value !== "" && dogImage.value !== ""){
             uploadFile(dogName.value, dogImage.files[0]);
+            addDogDialog.close();
         }
     }
 
@@ -84,12 +86,6 @@ const Footer = () => {
     }
 
 
-    if(loading){
-        return (
-            <p className='loading-block'>Loading...</p>
-        )
-    }
-
     if(finish){
         setTimeout(() => {
             window.location.reload(false);
@@ -98,8 +94,8 @@ const Footer = () => {
 
     return (
         <>
-            <div className={reloading ? 'reloading-block' : 'reloading-block-hidden'}>Reloading...</div>
-            <p className={finish ? 'finish-block' : 'finish-block-hidden'}>Dog Successfully Added</p>
+            {loading ? <div className='reloading-block'></div> : <div className={reloading ? 'reloading-block' : 'reloading-block-hidden'}>Reloading...</div>}
+            {loading ? <p className='loading-block'>Loading...</p> : <p className={finish ? 'finish-block' : 'finish-block-hidden'}>Dog Successfully Added</p>}
             <footer>
                 <dialog id="add-dog-dialog">
                     <form id='dog-form' method='dialog'>
