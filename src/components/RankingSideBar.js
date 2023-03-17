@@ -24,7 +24,7 @@ const RankingSideBar = ({toggleRank}) => {
             <div className='ranking-container'>
                 <h2>Ranking</h2>
                 {sortedDogs.length ?
-                    sortedDogs.map((dog, index) => <DogRankingCard key={index} placement={index} dogImage={dog.image} dogName={dog.name}/>) 
+                    sortedDogs.map((dog, index) => <DogRankingCard key={index} placement={index} dogImage={dog.image} dogName={dog.name}/>)
                     : <p className='rank-msg'>No Dogs Here</p>}
             </div>
         </div>

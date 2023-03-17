@@ -101,6 +101,12 @@ footer .submit-btn{
     place-items: center;
 }
 
+.prev-img{
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
 @keyframes slideDown {
     from{
         height: 0rem;

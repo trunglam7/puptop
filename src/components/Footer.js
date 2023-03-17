@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react'
 import {GrAdd} from 'react-icons/gr'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { storage } from '../backend/Firebase'
-import './Footer.css'
 import { DogsContext } from '../App'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../backend/Firebase'
+
+import './Footer.css'
 
 const Footer = () => {
 
@@ -14,6 +15,8 @@ const Footer = () => {
     const [loading, setLoading] = useState(false);
     const [finish, setFinish] = useState(false);
     const [reloading, setReloading] = useState(false);
+    const [prevImg, setPrevImg] = useState(null);
+    const [dogName, setDogName] = useState('');
 
     //function to handle submission of dogs
     //grabs the name and the file and sends it to the uploadFile function for further processing
@@ -35,6 +38,8 @@ const Footer = () => {
         const dogImage = document.getElementById('dog-image');
         dogName.value = "";
         dogImage.value = "";
+        setPrevImg(null);
+        setDogName('');
 
         addDogDialog.showModal();
     }
@@ -74,6 +79,15 @@ const Footer = () => {
         )
     }
 
+    //Function that returns a component for preview image
+    const PrevImgComponent = () => {
+        return (
+            <div className='Dog prev-img' style={{backgroundImage: `url(${prevImg})`}}>
+                <p>{dogName}</p>
+            </div>
+        )
+    }
+
     //updates the dog data by adding the new one
     function uploadDog(dogName, dogImage){
         const updateDogData = async () => {
@@ -84,7 +98,6 @@ const Footer = () => {
         };
         updateDogData().catch((err) => console.log(err));
     }
-
 
     if(finish){
         setTimeout(() => {
@@ -101,12 +114,13 @@ const Footer = () => {
                     <form id='dog-form' method='dialog'>
                         <div>
                             <label htmlFor='dog-name'>Name</label>
-                            <input id='dog-name' type='text' placeholder='Name' required/>
+                            <input id='dog-name' type='text' placeholder='Name' onChange={(e) => setDogName(e.target.value)}required/>
                         </div>
                         <div>
                             <label htmlFor='dog-photo'>Upload Photo</label>
-                            <input id='dog-image' className='image-input' type='file' accept='image/*' required/>
+                            <input id='dog-image' className='image-input' type='file' accept='image/*' onChange={(e) => setPrevImg(URL.createObjectURL(e.target.files[0]))} required/>
                         </div>
+                        {prevImg ? <PrevImgComponent /> : null}
                         <div className='btn-container'>
                             <button onClick={() => submitDogHandler()} className='submit-btn' type='button'>Submit</button>
                             <button onClick={() => closeDialogHandler()} className='submit-btn' type='button'>Cancel</button>
