@@ -99,6 +99,7 @@ const Footer = () => {
         updateDogData().catch((err) => console.log(err));
     }
 
+    //if upload of dog is finished in database, reload site
     if(finish){
         setTimeout(() => {
             window.location.reload(false);
