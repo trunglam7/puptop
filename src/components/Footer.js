@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import {GrAdd} from 'react-icons/gr'
+import {RiImageAddLine} from 'react-icons/ri'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { storage } from '../backend/Firebase'
 import { DogsContext } from '../App'
@@ -17,6 +18,7 @@ const Footer = () => {
     const [reloading, setReloading] = useState(false);
     const [prevImg, setPrevImg] = useState(null);
     const [dogName, setDogName] = useState('');
+    const [displayError, setDisplayError] = useState(false);
 
     //function to handle submission of dogs
     //grabs the name and the file and sends it to the uploadFile function for further processing
@@ -28,6 +30,10 @@ const Footer = () => {
         if(dogName.value !== "" && dogImage.value !== ""){
             uploadFile(dogName.value, dogImage.files[0]);
             addDogDialog.close();
+            setDisplayError(false);
+        }
+        else{
+            setDisplayError(true);
         }
     }
 
@@ -48,6 +54,7 @@ const Footer = () => {
         const addDogDialog = document.getElementById('add-dog-dialog');
 
         addDogDialog.close();
+        setDisplayError(false);
     }
 
     //function to upload image to Firebase storage and sends URL to uploadDog function for further processing
@@ -117,11 +124,14 @@ const Footer = () => {
                             <label htmlFor='dog-name'>Name</label>
                             <input id='dog-name' type='text' placeholder='Name' onChange={(e) => setDogName(e.target.value)}required/>
                         </div>
-                        <div>
-                            <label htmlFor='dog-photo'>Upload Photo</label>
+                        <div className='input-container'>
+                            <label htmlFor='dog-image' aria-label='Upload Photo'>
+                                <RiImageAddLine size={40}/>
+                            </label>
                             <input id='dog-image' className='image-input' type='file' accept='image/*' onChange={(e) => setPrevImg(URL.createObjectURL(e.target.files[0]))} required/>
                         </div>
                         {prevImg ? <PrevImgComponent /> : null}
+                        <p className={displayError ? 'error-message error-visible' : 'error-message'}>Please enter a name and upload image</p>
                         <div className='btn-container'>
                             <button onClick={() => submitDogHandler()} className='submit-btn' type='button'>Submit</button>
                             <button onClick={() => closeDialogHandler()} className='submit-btn' type='button'>Cancel</button>

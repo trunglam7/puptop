@@ -61,6 +61,7 @@ footer .submit-btn{
 .btn-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding-top: 10px;
 }
 
 .loading-block, .finish-block{
@@ -105,6 +106,25 @@ footer .submit-btn{
     border-radius: 10px;
     margin: auto;
     margin-bottom: 20px;
+}
+
+.image-input{
+    display: none;
+}
+
+.input-container{
+    padding: 10px;
+    margin: 0;
+}
+
+.error-message{
+    color: red;
+    font-size: .75rem;
+    display: none;
+}
+
+.error-visible{
+    display: block;
 }
 
 @keyframes slideDown {
