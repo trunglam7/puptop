@@ -9,6 +9,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(199.2, 77.4%, 90%);
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 code {

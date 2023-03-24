@@ -3,4 +3,5 @@
     flex-direction: column;
     min-height: 100dvh;
     justify-content: space-between;
+    overflow-x: hidden;
 }

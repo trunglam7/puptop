@@ -1,6 +1,7 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react'
 import DogCard from './DogCard'
 import {AiFillCloseCircle, AiFillHeart} from "react-icons/ai"
+import { animated, useSpring } from '@react-spring/web'
 
 import './VotingPlatform.css'
 import { DogsContext } from '../App'
@@ -15,6 +16,12 @@ const VotingPlatform = ({ user }) => {
     const [disableVote, setDisableVote] = useState(false);
     const [dog, setDog] = useState(voteStorage);
 
+
+    const appearCard = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        reset: true,
+      })
 
     //function to update user's number of votes to keep track of current dog they are on
     const updateUserData = useCallback( async () => {
@@ -38,11 +45,25 @@ const VotingPlatform = ({ user }) => {
     }, [user.uid])
 
     //functions to handle user choices
-    function slideLeftHandler() {
-        setVote("animate-slide-left");
+    function slideLeftHandler(swipe) {
+        if(!swipe){
+            setVote("animate-slide-left");
+        }
         setVoteStorage(voteStorage + 1);
         setDisableVote(true);
-        setTimeout(() => {
+        if(!swipe) {
+            setTimeout(() => {
+                setVote("");
+                setDisableVote(false);
+                if(dog + 1 >= dogData.length){
+                    setDog(null);
+                }
+                else{
+                    setDog(dog + 1);
+                }
+            }, 1000);
+        }
+        else{
             setVote("");
             setDisableVote(false);
             if(dog + 1 >= dogData.length){
@@ -51,14 +72,28 @@ const VotingPlatform = ({ user }) => {
             else{
                 setDog(dog + 1);
             }
-        }, 1000);
+        }
     }
 
-    function slideRightHandler() {
-        setVote("animate-slide-right");
+    function slideRightHandler(swipe) {
+        if(!swipe){
+            setVote("animate-slide-right");
+        }
         setVoteStorage(voteStorage + 1);
         setDisableVote(true);
-        setTimeout(() => {
+        if(!swipe) {
+            setTimeout(() => {
+                setVote("");
+                setDisableVote(false);
+                if(dog + 1 >= dogData.length){
+                    setDog(null);
+                }
+                else{
+                    setDog(dog + 1);
+                }
+            }, 1000);
+        }
+        else{
             setVote("");
             setDisableVote(false);
             if(dog + 1 >= dogData.length){
@@ -67,7 +102,7 @@ const VotingPlatform = ({ user }) => {
             else{
                 setDog(dog + 1);
             }
-        }, 1000);
+        }
     }
 
     useEffect(() => {
@@ -86,7 +121,9 @@ const VotingPlatform = ({ user }) => {
 
     return (
         <main>
-            <DogCard vote={vote} dog={dog}/>
+            <animated.div style={appearCard}>
+                <DogCard vote={vote} dog={dog} slideLeftHandler={slideLeftHandler} slideRightHandler={slideRightHandler}/>
+            </animated.div>
             <div className='vote-buttons'>
                 <button disabled={dog === null || disableVote ? true : false} className='left' onClick={() => slideLeftHandler()}><AiFillCloseCircle size={65} color="gray"/></button>
                 <button disabled={dog === null || disableVote ? true : false} className='right' onClick={() => slideRightHandler()}><AiFillHeart size={65} color="pink"/></button>
