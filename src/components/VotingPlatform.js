@@ -20,7 +20,7 @@ const VotingPlatform = ({ user }) => {
     const appearCard = useSpring({
         from: {opacity: 0},
         to: {opacity: 1},
-        reset: true,
+        reset: false,
       })
 
     //function to update user's number of votes to keep track of current dog they are on

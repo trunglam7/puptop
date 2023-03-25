@@ -4,7 +4,7 @@ import Header from './components/Header';
 import VotingPlatform from './components/VotingPlatform';
 import { db } from './backend/Firebase';
 import { getAuth, signInAnonymously } from "firebase/auth";
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import './App.css'
@@ -49,6 +49,12 @@ function App() {
         else{
           console.log("error");
         }
+
+        const unsubscribe = onSnapshot(docRef, (doc) => {
+          setDogList(doc.data().dogs);
+        })
+
+        return unsubscribe;
       };
       docCheck().catch((err) => console.log(err));
     }
