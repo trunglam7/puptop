@@ -115,6 +115,7 @@ footer .submit-btn{
 .input-container{
     padding: 10px;
     margin: 0;
+    cursor: pointer;
 }
 
 .error-message{
